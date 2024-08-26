@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Xpo - Connect whith your loved ones
+{% endblock title %}
+
+
+{% block content %}
+
+
+
+<div class="card text-center w-50 mx-auto mt-5">
+    <h1 class="text-center mt-4">Are you sure you want to delete post?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="my-3 d-flex justify-content-center gap-3">
+            <button class="btn btn-danger">Delete</button>
+            <a href="{% url "tweet_list" %}" class="btn btn-info">Cancel</a>
+        </div>
+     </form>
+</div>
+
+
+{% endblock content %}

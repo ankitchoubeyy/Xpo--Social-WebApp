@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %} Xpo - Connect whith your loved ones
+{% endblock title %} {% block content %}
+
+<h1 class="text-center mt-4">
+  Welcome to the <span class="text-info">Xpo</span> Socail Media app.
+</h1>
+
+<h2 class="text-info my-2">{% if form.instad %} {% else %} Create Posts {% endif %}</h2>
+<form method='POST' enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-warning" type="Submit">Submit</button>
+    <a href="{% url "tweet_list" %}" class="mx-4 btn btn-info">Back to Tweeets</a>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Xpo - Connect whith your loved ones
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="text-center mt-4">Welcome to the <span class="text-info">Xpo</span> Socail Media platform.</h1>
+
+
+<div class="container">
+    <a class="btn btn-info mb-4" href="{% url "tweet_create" %}">Create a post</a>
+
+<div class="mb-4 d-flex justify-content-between gap-3 flex-wrap">
+    {% for tweet in tweets %}
+    <div class="card shadow-sm" style="width: 20rem;">
+        {% if tweet.photo %}
+        <img src="{{tweet.photo.url}}" class="card-img" alt="...">
+        {% else %}
+        <img src="" class="card-img" alt="...">
+        
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{tweet.user.username}}</h5>
+          <p class="card-text">{{tweet.text}}</p>
+          <a href="{% url "tweet_edit" tweet.id %}" class="btn btn-info">Edit</a>
+          <a href="{% url "tweet_delete" tweet.id %}" class="mx-2 btn btn-danger">Delete</a>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock content %}
